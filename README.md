@@ -1,6 +1,6 @@
 # Adware Apocalypse '99: Enhanced Chaos Edition
 
-![The Horror... The Horror...]([https://i.imgur.com/JANcgY1.png](https://static.wikia.nocookie.net/microsoft/images/3/30/Clippy-microsoft-office.png))
+![The Horror... The Horror...](https://static.wikia.nocookie.net/microsoft/images/3/30/Clippy-microsoft-office.png)
 
 A lovingly crafted digital PTSD simulator for anyone who survived the internet of the late 1990s. Experience the thrill of a 128MB RAM computer infected with every piece of adware known to man, all within a single, horrifying HTML file.
 

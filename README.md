@@ -1,6 +1,6 @@
 # Adware Apocalypse '99: Enhanced Chaos Edition
 
-![The Horror... The Horror...](https://upload.wikimedia.org/wikipedia/commons/3/30/Clippy.gif)
+![The Horror... The Horror...](https://i.imgur.com/8z8gZg3.png)
 
 A lovingly crafted digital PTSD simulator for anyone who survived the internet of the late 1990s. Experience the thrill of a 128MB RAM computer infected with every piece of adware known to man, all within a single, horrifying HTML file.
 

@@ -42,7 +42,7 @@ Survive for as long as possible. Your health is the **System Integrity** bar. Wh
 
 ### Installation
 This is a self-contained HTML file. No server or complex setup needed!
-1.  Download the `adware-apocalypse-enhanced.html` file.
+1.  Download the `index.html` file.
 2.  Open it in a modern web browser (like Chrome or Firefox).
 3.  Click your mouse to enable the audio, choose a difficulty, and begin your journey into digital hell.
 

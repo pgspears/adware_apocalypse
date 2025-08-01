@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adware Apocalypse '99: Enhanced Chaos Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* --- Global & Desktop Chaos (V16 Style) --- */
+    :root {
+      --integrity-color: #0f0;
+      --integrity-percent: 100%;
+      --cursor-trail-color: #0f0;
+    }
+    * { cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEqSURBVCiRjZAxSwNBEIW/3Vzc5VIIFoKNjb9AwEqwsLIQrCzsLKy0sLDyB1hY2IidjaWVjYWFhYWFlYWFhYUgCIKgoMGQy917FrkjudwlPpjd2Xnz3szOLhhjmCVmxspDiTnAnJwB9IA+0Ae6QBvomJkxxhhjTNEYU8gixphp/JwxpmCMKRpjylPtYSnGMiJxEqXWg2xjJY6TNEXBKCLRc5S2K51WtxsjjiPa7TaNZpN2p83g6wtNk4RRQEBAmAiT4wl+4FOtVPnqDwFwHMdmBojjCM/zqNZqrC4vA/Az/AUQSZRA6SHiuBZ2HAcRQWttv2Vk9hQBJI4BsLbClJYoITmSJLFyElMAMQ1WEeKaKojiXyJAFFEAfA/ATSPOWb6E5/v0e71/YJE5/gGj2mxWYOxIHgAAAABJRU5ErkJggg=='), auto; }
+    body { 
+      margin: 0; padding: 0;
+      background: #000;
+      font-family: 'Comic Sans MS', cursive; 
+      overflow: hidden; 
+      transition: filter 0.5s, transform 0.5s;
+      cursor: default;
+      image-rendering: pixelated;
+    }
+    
+    /* Cursor trail effect */
+    .cursor-trail {
+      position: fixed;
+      width: 16px;
+      height: 16px;
+      background: var(--cursor-trail-color);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.7;
+      border-radius: 50%;
+      animation: fadeOut 0.5s forwards;
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(0); }
+    }
+    
+    /* Matrix rain effect */
+    #matrix-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    .matrix-active { opacity: 0.3 !important; }
+    
+    #background-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
+    #desktop {
+      position: relative;
+      width: 100%; height: 100vh;
+      background-color: #008080;
+      transition: background-color 1s, filter 1s;
+      z-index: 2;
+    }
+    
+    /* Desktop Degradation Styles */
+    .desktop-degrade-1 { background-color: #3a8080 !important; filter: sepia(0.3); }
+    .desktop-degrade-2 { background-color: #806b00 !important; filter: saturate(2) contrast(1.5); animation: faintFlicker 0.5s infinite; }
+    .desktop-degrade-3 { background-color: #580000 !important; filter: invert(0.8) hue-rotate(180deg); animation: heavyFlicker 0.2s infinite; }
+    .desktop-bsod { background: #0000AA !important; }
+    
+    @keyframes faintFlicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.95; } }
+    @keyframes heavyFlicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+    
+    /* Screen effects */
+    .major-glitch { animation: screenGlitch 0.7s ease-in-out infinite; }
+    .screen-shake { animation: screenShake 0.5s ease-in-out infinite; }
+    .scan-lines::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+      );
+      pointer-events: none;
+      z-index: 4000;
+      animation: scanMove 8s linear infinite;
+    }
+    
+    @keyframes screenGlitch { 
+      0%, 100% { transform: translate(0,0) skew(0); } 
+      25% { transform: translate(15px,-10px) skew(-3deg); } 
+      50% { transform: translate(-10px,15px) skew(5deg); } 
+      75% { transform: translate(5px,5px) skew(2deg); } 
+    }
+    @keyframes screenShake {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-5px, -5px); }
+      20% { transform: translate(5px, -5px); }
+      30% { transform: translate(-5px, 5px); }
+      40% { transform: translate(5px, 5px); }
+      50% { transform: translate(-2px, -2px); }
+    }
+    @keyframes scanMove {
+      from { background-position: 0 0; }
+      to { background-position: 0 10px; }
+    }
+    
+    #explosion{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at center,rgba(255,255,255,0.95),rgba(255,60,0,0.9) 60%);pointer-events:none;z-index:3001;animation:explosionFlash 1s ease-out forwards;}
+    @keyframes explosionFlash{0%{opacity:0;}10%{opacity:1;}50%{opacity:0.9;}100%{opacity:0;}}
+    
+    #jumpscare { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8000; background-color: #00f; background-size: contain; background-repeat: no-repeat; background-position: center; }
+    
+    /* --- Startup & End Screens --- */
+    #startScreen { position:fixed;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:5000;text-align:center; background: #000; }
+    #start-controls { display: none; }
+    #startScreen h2 { font-size:3rem; margin-bottom:20px; text-shadow: 2px 2px #f00; color: #fff; animation: glowPulse 2s ease-in-out infinite; }
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00; }
+      50% { text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0; }
+    }
+    
+    .difficulty-btn{margin:10px;padding:15px 30px;font-size:1.5rem;background:#222;color:#0f0;border:3px solid #0f0;cursor:pointer;transition: all 0.2s; border-radius: 5px; }
+    .difficulty-btn:hover { background: #0f0; color: #000; box-shadow: 0 0 20px #0f0; transform: scale(1.1); }
+    .insane-btn { color: #f00; border-color: #f00; animation: pulseInsane 0.5s infinite alternate; }
+    .nightmare-btn { 
+      color: #f0f; 
+      border-color: #f0f; 
+      background: #000;
+      font-weight: bold;
+      animation: nightmarePulse 0.3s infinite alternate, nightmareGlow 1s infinite alternate;
+    }
+    @keyframes pulseInsane { from { box-shadow: 0 0 5px #f00; } to { box-shadow: 0 0 20px #f00; } }
+    @keyframes nightmarePulse { from { transform: scale(1) rotate(-2deg); } to { transform: scale(1.05) rotate(2deg); } }
+    @keyframes nightmareGlow { from { text-shadow: 0 0 10px #f0f; } to { text-shadow: 0 0 20px #f0f, 0 0 30px #f0f; } }
+    
+    /* --- Star Wars Intro --- */
+    #intro-container { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: #000; perspective: 800px; overflow: hidden; }
+    #intro-crawler { position: absolute; top: 100%; width: 80%; left: 10%; color: #ffc; font-size: 3vw; text-align: justify; animation: intro-animation 28s linear forwards; }
+    #intro-crawler h2 { text-align: center; font-size: 3vw; }
+    @keyframes intro-animation { from { top: 100%; transform: rotateX(15deg); } to { top: -150%; transform: rotateX(15deg); } }
+    #skip-intro-btn { position: fixed; bottom: 20px; right: 20px; z-index: 5001; background: #333; color: #fff; border: 2px solid #fff; padding: 10px 15px; cursor: pointer; }
+    
+    #bsod-screen { display: none; background: #0000AA; color: #FFF; font-family: 'Lucida Console', monospace; padding: 20px; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; }
+    #bsod-screen h1 { font-size: 2.5rem; background: #c0c0c0; color: #0000AA; padding: 5px 20px; display: inline-block; }
+    #restartBtn { margin-top: 30px; }
+    
+    /* --- Browser & Content --- */
+    #browser{ position: absolute; width: 85vw; height: 80vh; top: 50%; left: 50%; transform: translate(-50%, -50%); border:8px inset #c0c0c0; box-shadow:5px 5px 20px rgba(0,0,0,0.5); background: #fff; display: flex; flex-direction: column; min-height: 400px; z-index: 50; transition: all 0.3s; }
+    .browser-tilted { transform: translate(-50%, -50%) rotate(5deg) !important; }
+    .browser-glitched { animation: browserGlitch 0.2s infinite; }
+    @keyframes browserGlitch {
+      0% { transform: translate(-50%, -50%) skewX(0deg); }
+      25% { transform: translate(-48%, -50%) skewX(5deg); }
+      50% { transform: translate(-52%, -50%) skewX(-5deg); }
+      75% { transform: translate(-49%, -50%) skewX(3deg); }
+      100% { transform: translate(-50%, -50%) skewX(0deg); }
+    }
+    
+    #toolbars{display:flex;flex-direction:column;}
+    .toolbar{ display:flex; flex-wrap:wrap; align-items: center; background:#c0c0c0; border-top: 1px solid #fff; border-bottom: 1px solid #808080; padding: 2px; }
+    .toolbar-item { border: 2px outset #f0f0f0; background-color: #c0c0c0; color: #000; padding: 2px 5px; margin: 2px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; white-space: nowrap; transition: all 0.1s; }
+    .toolbar-item:active { border-style: inset; }
+    .toolbar-item:hover { transform: scale(1.1); }
+    .toolbar-item img { height: 16px; width: 16px; margin-right: 4px; }
+    .toolbar-separator { width: 2px; height: 20px; background-color: #808080; border-right: 1px solid #fff; margin: 0 4px; }
+    
+    /* Toolbar item special styles */
+    .toolbar-urgent { 
+      background: #ff0 !important; 
+      color: #f00 !important; 
+      font-weight: bold;
+      animation: urgentFlash 0.5s infinite alternate;
+    }
+    @keyframes urgentFlash { from { box-shadow: 0 0 5px #f00; } to { box-shadow: 0 0 15px #f00; } }
+    
+    .toolbar-rainbow {
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) !important;
+      color: #fff !important;
+      font-weight: bold;
+      animation: rainbowShift 2s linear infinite;
+    }
+    @keyframes rainbowShift {
+      to { background-position: 100% 0; }
+    }
+    
+    #content{position:relative;flex-grow:1;overflow:auto;margin-top:10px;text-align:center;}
+    h1{text-align:center;font-size:2rem;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f);-webkit-background-clip:text;color:transparent;animation:textGlitch .3s infinite alternate;}
+    @keyframes textGlitch{0%{text-shadow:2px 2px red;}100%{text-shadow:-2px -2px lime;}}
+    #marquee{margin:8px 0;font-size:16px;color:#900;background:#ffc;border:1px solid #900;}
+    .control-btn{display:inline-block;margin: 10px;padding:6px 12px;background:#000;color:#fff;border:1px solid #f0f;animation:pulse 1s infinite alternate;font-size:14px;cursor:pointer;transition: all 0.2s;}
+    .control-btn:hover { transform: scale(1.2) rotate(5deg); }
+    #agreeBtn { background: #1a881a; color: white; border-color: #0f0; box-shadow: 0 0 15px #0f0; }
+    @keyframes pulse{from{transform:scale(1);}to{transform:scale(1.05);}}
+    
+    /* --- Popups & Icons --- */
+    .popup-window{position:fixed;background:#f0f0f0;border:2px solid #000080;box-shadow:4px 4px 10px rgba(0,0,0,0.5);font-family:'Segoe UI',Tahoma,sans-serif;z-index:1500; border-radius: 5px; cursor: pointer; transition: all 0.1s; }
+    .popup-window:hover { transform: scale(1.02); }
+    .popup-header{background:#000080;color:#fff;padding:4px 8px;font-size:14px;display:flex;justify-content:space-between;cursor:move;}
+    .popup-body{padding:8px;color:#000;font-size:14px;}
+    .close-btn{background:#c0c0c0;border:1px solid #000;padding:0 4px;font-weight:bold;cursor:pointer;}
+    .close-btn:hover { background: #f00; color: #fff; }
+    
+    /* Special popup types */
+    .popup-urgent { border: 4px solid #f00 !important; animation: urgentShake 0.2s infinite; }
+    @keyframes urgentShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    
+    .popup-fake-close .close-btn { cursor: not-allowed; }
+    
+    .desktop-icon { position: fixed; z-index: 100; width: 80px; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .desktop-icon:hover { transform: scale(1.1); filter: brightness(1.2); }
+    .desktop-icon img { width: 48px; height: 48px; }
+    .desktop-icon p { color: white; text-shadow: 1px 1px #000; font-size: 12px; margin: 0; }
+    
+    /* --- AI Assistants --- */
+    #flippy-assistant { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 4000; animation: flippyEnter 0.5s forwards; }
+    @keyframes flippyEnter { from { transform: translateY(200%); } to { transform: translateY(0); } }
+    #flippy-bubble { background: #FFFFE1; border: 1px solid black; padding: 15px; border-radius: 10px; width: 220px; position: relative; margin-right: 60px; }
+    #flippy-bubble::after { content: ''; position: absolute; bottom: 10px; right: -10px; width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 10px solid #FFFFE1; }
+    #flippy-close { position: absolute; top: 5px; right: 5px; cursor: pointer; font-weight: bold; }
+    #flippy-img { position: absolute; bottom: 0; right: 0; width: 64px; animation: flippyBob 2s ease-in-out infinite; }
+    @keyframes flippyBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    
+    /* Bonzi Buddy */
+    #bonzi-buddy { display: none; position: fixed; bottom: 20px; left: 20px; z-index: 4001; animation: bonziEnter 0.5s forwards; }
+    @keyframes bonziEnter { from { transform: scale(0) rotate(720deg); } to { transform: scale(1) rotate(0deg); } }
+    #bonzi-img { width: 100px; height: 100px; animation: bonziDance 2s infinite; cursor: pointer; }
+    @keyframes bonziDance {
+      0%, 100% { transform: rotate(-5deg); }
+      25% { transform: rotate(5deg) translateY(-10px); }
+      50% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg) translateY(-10px); }
+    }
+    #bonzi-speech { background: #9370DB; color: white; padding: 10px; border-radius: 10px; margin-bottom: 10px; font-weight: bold; max-width: 200px; display: none; }
+    
+    /* --- Scoreboard & UI --- */
+    #scoreboard{position:fixed;top:10px;right:10px;width:250px;background:rgba(0,0,0,0.9);color:#0f0;padding:15px;font-family:monospace;font-size:16px;border:3px solid #0f0;border-radius:10px;box-shadow:0 0 15px rgba(0,255,0,0.7);z-index:2001;}
+    #scoreboard p{margin:6px 0;}
+    #integrity-bar-container{width:100%;background:#400;border:1px solid #800;height:20px;margin-top:10px;position:relative;overflow:hidden;}
+    #integrity-bar{width:var(--integrity-percent);height:100%;background:var(--integrity-color);transition:width 0.5s, background-color 0.5s;position:relative;}
+    #integrity-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    }
+    
+    /* --- Super-Weapons & Nuke Text --- */
+    #nuke-controls { position:fixed; bottom: 10px; left: 10px; z-index: 2002; display: none; flex-direction: column; gap: 5px; }
+    .nuke-btn { padding: 8px 15px; font-size: 14px; cursor: pointer; border: 3px solid #800; background: red; color: #fff; animation: pulseNuke 1s infinite alternate; position: relative; }
+    .nuke-btn:disabled { cursor: not-allowed; background: #555; color: #999; animation: none; }
+    .nuke-btn .cooldown-timer { font-weight: bold; margin-left: 8px; color: #ff0; }
+    #annihilateBtn { background: darkorange; color: #000; }
+    #matrixBtn { background: #0f0; color: #000; border-color: #0f0; }
+    @keyframes pulseNuke{from{transform:scale(1);}to{transform:scale(1.1);}}
+    
+    #nuke-text-overlay {
+        display: none;
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3002;
+        font-size: 6rem;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 0 10px #000, 0 0 20px #000, 5px 5px 5px #f00;
+        pointer-events: none;
+        animation: nukeTextAnim 2s ease-out forwards;
+    }
+    @keyframes nukeTextAnim {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        10% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+    
+    /* --- Achievements --- */
+    .achievement-popup { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(45deg, #ffd700, #ffec8b); color: #333; padding: 20px; border: 4px solid #fff; border-radius: 10px; z-index: 6000; box-shadow: 0 0 30px #ffd700; text-align: center; font-size: 1.5rem; animation: achievement-anim 4s ease-in-out forwards; }
+    .achievement-popup-title { font-weight: bold; display: block; font-size: 1.2rem; color: #a0522d; }
+    @keyframes achievement-anim { 0% { bottom: -100px; opacity: 0; } 15% { bottom: 20px; opacity: 1; } 85% { bottom: 20px; opacity: 1; } 100% { bottom: -100px; opacity: 0; } }
+    
+    /* --- Easter Eggs --- */
+    #dvd-logo {
+      display: none;
+      position: fixed;
+      width: 100px;
+      height: 60px;
+      background: linear-gradient(45deg, #ff0080, #80ff00);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      line-height: 60px;
+      font-size: 24px;
+      z-index: 3000;
+    }
+    
+    .nyan-cat {
+      display: none;
+      position: fixed;
+      width: 100px;
+      height: 50px;
+      background: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+      z-index: 2999;
+      pointer-events: none;
+    }
+    
+    /* Virus scanner fake window */
+    .virus-scanner {
+      width: 400px;
+      background: #c0c0c0;
+      border: 2px solid #000;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2500;
+    }
+    .virus-scanner-header {
+      background: linear-gradient(to right, #000080, #1084d0);
+      color: white;
+      padding: 2px 5px;
+      font-weight: bold;
+    }
+    .virus-scanner-body {
+      padding: 10px;
+      text-align: center;
+    }
+    .scan-progress {
+      width: 100%;
+      height: 20px;
+      background: #fff;
+      border: 1px solid #000;
+      margin: 10px 0;
+    }
+    .scan-progress-bar {
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        #0f0,
+        #0f0 10px,
+        #090 10px,
+        #090 20px
+      );
+      width: 0%;
+      animation: scanning 3s linear forwards;
+    }
+    @keyframes scanning {
+      to { width: 100%; }
+    }
+    
+    /* Y2K countdown */
+    #y2k-countdown {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 8rem;
+      color: #f00;
+      text-shadow: 0 0 20px #f00;
+      z-index: 7000;
+      font-family: 'Courier New', monospace;
+      animation: y2kFlash 0.5s infinite alternate;
+    }
+    @keyframes y2kFlash {
+      from { opacity: 1; }
+      to { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="background-canvas"></canvas>
+  <canvas id="matrix-rain"></canvas>
+  <div id="explosion"></div>
+  <div id="nuke-text-overlay"></div>
+  <div id="jumpscare"></div>
+  <div id="y2k-countdown"></div>
+  <div id="dvd-logo">DVD</div>
+  
+  <div id="startScreen">
+      <div id="intro-container">
+          <button id="skip-intro-btn">SKIP INTRO</button>
+          <div id="intro-crawler">
+              <h2>A long time ago in a browser far, far away....</h2>
+              <p>Episode IV: A NEW HELL</p>
+              <p>The year is 1999. It is a time of digital chaos. The Information Superhighway, once a beacon of hope, is now a treacherous road filled with rogue pop-ups and parasitic toolbars.</p>
+              <p>You, a lone user armed with only a 28.8k modem and a handful of megabytes of RAM, must navigate this perilous landscape.</p>
+              <p>Your mission: survive the Y2K apocalypse. Your system's integrity is failing. Bonzi Buddy awaits. Prepare to enter... The ADWARE APOCALYPSE.</p>
+              <p>May the CTRL+ALT+DEL be with you.</p>
+          </div>
+      </div>
+
+      <div id="start-controls">
+          <h2>Adware Apocalypse '99</h2>
+          <button class="difficulty-btn" onclick="startSim('easy')">Easy Mode (Training Wheels)</button>
+          <button class="difficulty-btn" onclick="startSim('medium')">Medium (The Real Internet)</button>
+          <button class="difficulty-btn" onclick="startSim('hard')">Hard (LimeWire User)</button>
+          <button class="difficulty-btn insane-btn" onclick="startSim('insane')">INSANE (No Antivirus)</button>
+          <button class="difficulty-btn nightmare-btn" onclick="startSim('nightmare')">NIGHTMARE (IE6 + ActiveX)</button>
+      </div>
+  </div>
+
+  <div id="bsod-screen">
+      <h1>A fatal exception 0E has occurred at 0028:C0011E36</h1>
+      <p>Your system has performed an illegal operation and will be shut down.</p>
+      <p>* Press any key to terminate the current application</p>
+      <p>* Press CTRL+ALT+DEL to restart your computer. You will lose any unsaved information in all applications.</p>
+      <p>Press any key to continue _</p>
+      <div id="final-score"></div>
+      <p id="final-insult" style="margin-top: 20px; font-style: italic;"></p>
+      <button id="restartBtn" class="difficulty-btn" onclick="restartGame()">Download More RAM and Try Again!</button>
+  </div>
+
+  <div id="desktop">
+    <div id="browser">
+      <div id="toolbars"></div>
+      <div id="content">
+        <h1>Welcome to GeoCities!</h1>
+        <marquee id="marquee" scrollamount="12">🚨 YOU ARE THE 1,000,000TH VISITOR! CLICK HERE TO CLAIM YOUR PRIZE! 🚨</marquee>
+        <img src="https://i.imgur.com/7F5UBKH.gif" style="width: 88px; height: 31px;" alt="Under Construction">
+        <p>This site is best viewed in Netscape Navigator 4.0 at 800x600 resolution</p>
+        <button class="control-btn" onclick="toggleFlip()">🔄 DO A BARREL ROLL!</button>
+        <button id="agreeBtn" class="control-btn" onclick="agreeToTerms()">I Agree To Install FREE Smileys!</button>
+        <button class="control-btn" onclick="downloadRam()">⬇️ Download More RAM</button>
+        <p><blink>Sign my guestbook!</blink></p>
+      </div>
+      <footer>© 1999 xXx_DarkAngel_xXx – Webring | Links | About Me | My Pets</footer>
+    </div>
+  </div>
+
+  <div id="flippy-assistant">
+    <div id="flippy-bubble">
+      <span id="flippy-close" onclick="dismissFlippy()">X</span>
+      <p id="flippy-text">It looks like you're trying to destroy your computer. Would you like help?</p>
+    </div>
+    <img id="flippy-img" src="https://i.imgur.com/JANcgY1.png" alt="Clippy">
+  </div>
+
+  <div id="bonzi-buddy">
+    <div id="bonzi-speech">Hello, expand your mind!</div>
+    <img id="bonzi-img" src="https://i.imgur.com/9Mk7Vem.png" alt="Bonzi" onclick="bonziClick()">
+  </div>
+
+  <div id="nuke-controls">
+      <button id="nukePopupsBtn" class="nuke-btn" onclick="useNukePopups()">💣 Nuke Popups <span class="cooldown-timer"></span></button>
+      <button id="nukeToolbarsBtn" class="nuke-btn" onclick="useNukeToolbars()">💥 Nuke Toolbars <span class="cooldown-timer"></span></button>
+      <button id="annihilateBtn" class="nuke-btn" onclick="useAnnihilate()">☢️ ANNIHILATE! <span class="cooldown-timer"></span></button>
+      <button id="matrixBtn" class="nuke-btn" onclick="useMatrix()">🕶️ Enter The Matrix <span class="cooldown-timer"></span></button>
+  </div>
+
+  <div id="scoreboard">
+    <p>⏰ Time: <span id="timer">0</span>s</p>
+    <p>💾 System Integrity:</p>
+    <div id="integrity-bar-container"><div id="integrity-bar"></div></div>
+    <div id="system-stats">
+        <p>🖥️ CPU: <span id="cpu-usage">0</span>%</p>
+        <p>💿 RAM: <span id="ram-usage">0</span>MB</p>
+        <p>📞 Modem: <span id="modem-speed">28.8k</span></p>
+    </div>
+    <p>❌ Pop-ups Closed: <span id="pop-closed-count">0</span></p>
+    <p>🔧 Toolbars Cleared: <span id="tb-cleared-count">0</span></p>
+    <p>💥 Nukes Used: <span id="nuke-count">0</span></p>
+    <p>🖱️ Icons Clicked: <span id="icon-clicks">0</span></p>
+    <p>🏆 Score: <span id="score">0</span></p>
+  </div>
+
+  <script>
+    // --- GLOBAL STATE & CONFIG ---
+    const simState = { 
+      running: false, 
+      difficulty: 'medium', 
+      startTime: null, 
+      intervals: [], 
+      integrity: 100, 
+      resources: { cpu: 0, ram: 128, modemSpeed: 28.8 }, 
+      cooldowns: { nuke: 0, matrix: 0 }, 
+      counts: { 
+        popups: 0, toolbars: 0, icons: 0, closedPopups: 0, 
+        clearedToolbars: 0, nukesUsed: 0, iconsClicked: 0,
+        bonziClicks: 0, flippyDismissals: 0
+      }, 
+      elements: { popups: [], toolbars: [], icons: [] }, 
+      achievements: { 
+        survive60: false, close25: false, useNuke: false, 
+        clickIcon: false, clickBaby: false, agree: false,
+        bonzi10: false, matrix: false, y2k: false,
+        dvdCorner: false, ramDownload: false, virusScan: false
+      },
+      score: 0,
+      dvdPosition: { x: 100, y: 100, dx: 2, dy: 2 },
+      matrixActive: false,
+      scanLines: false
+    };
+    
+    const difficultySettings = { 
+      easy:      { tb: 5000, pu: 4000, icon: 12000, integrityDrain: 0.08, scoreMultiplier: 0.5 }, 
+      medium:    { tb: 3000, pu: 2500, icon: 8000,  integrityDrain: 0.15, scoreMultiplier: 1.0 }, 
+      hard:      { tb: 2000, pu: 1500, icon: 6000,  integrityDrain: 0.25, scoreMultiplier: 1.5 }, 
+      insane:    { tb: 1000, pu: 800,  icon: 4000,  integrityDrain: 0.40, scoreMultiplier: 2.0 },
+      nightmare: { tb: 500,  pu: 400,  icon: 2000,  integrityDrain: 0.60, scoreMultiplier: 3.0 }
+    };
+    
+    const cooldownSettings = { easy: 25, medium: 20, hard: 15, insane: 12, nightmare: 8 };
+    
+    const DOM = { 
+      body: document.body, 
+      scoreboard: document.getElementById('scoreboard'), 
+      startScreen: document.getElementById('startScreen'), 
+      browser: document.getElementById('browser'), 
+      toolbars: document.getElementById('toolbars'), 
+      nukeText: document.getElementById('nuke-text-overlay'), 
+      nukeControls: document.getElementById('nuke-controls'), 
+      flippy: document.getElementById('flippy-assistant'), 
+      bonzi: document.getElementById('bonzi-buddy'),
+      bsod: document.getElementById('bsod-screen'), 
+      desktop: document.getElementById('desktop'), 
+      bgCanvas: document.getElementById('background-canvas'), 
+      matrixCanvas: document.getElementById('matrix-rain'),
+      bgCtx: null, 
+      matrixCtx: null,
+      nukeBtns: document.querySelectorAll('.nuke-btn'), 
+      jumpscare: document.getElementById('jumpscare'), 
+      marquee: document.getElementById('marquee'), 
+      introContainer: document.getElementById('intro-container'), 
+      introCrawler: document.getElementById('intro-crawler'), 
+      startControls: document.getElementById('start-controls'), 
+      skipIntroBtn: document.getElementById('skip-intro-btn'),
+      dvdLogo: document.getElementById('dvd-logo'),
+      y2kCountdown: document.getElementById('y2k-countdown')
+    };
+
+    // --- ENHANCED LORE & MEME DATA ---
+    const toolbarData = { 
+      labels: [
+        'Free iPad!', 'MySpace', 'Bonzi Buddy', 'Ask Jeeves', 'WinZip Trial', 
+        'Weatherbug', 'RealPlayer', 'Clean PC!', 'DOWNLOAD', 'More RAM', 
+        'Hamster Dance', '1,000,000th Visitor!', 'Comet Cursor', 'Purple Monkey',
+        'WebShots', 'ScreenMate', 'Gator', 'HotBar', 'CoolWebSearch', 'Kazaa',
+        'BearShare', 'Morpheus', 'eDonkey', 'WinMX', 'Napster Lives!',
+        'FREE SMILEYS', 'You Have Mail!', 'Punch the Monkey!', 'Win a Car!',
+        'Meet Singles!', 'Lose Weight Now!', 'One Weird Trick!', 'Doctors HATE Him!'
+      ], 
+      icons: [ 
+        'https://i.imgur.com/vHqXN2p.png', 'https://i.imgur.com/5u2yXvA.png', 
+        'https://i.imgur.com/kS9bW7O.png', 'https://i.imgur.com/gA3gY4j.png', 
+        'https://i.imgur.com/M6x5g02.png', 'https://i.imgur.com/OqT9M77.png', 
+        'https://i.imgur.com/JANcgY1.png', 'https://i.imgur.com/9Mk7Vem.png'
+      ], 
+      fonts: ['Arial', 'Times New Roman', 'Courier New', 'Impact', 'Comic Sans MS', 'Papyrus'] 
+    };
+    
+    const popupMsgs = [
+      'All your base are belong to us.', 
+      'The cake is a lie.', 
+      'Do a barrel roll!', 
+      'Your PC is running slow! Download more RAM?', 
+      'It\'s dangerous to go alone! Take this!',
+      'LEEROY JENKINS!', 
+      'Confirm your SSN to win a free cruise!',
+      'Hot singles in your area want to meet YOU!',
+      'Congratulations! You\'ve won!',
+      'Your computer may be infected!',
+      'Click HERE for FREE iPhone!',
+      'This is not a scam!!!',
+      'Doctors HATE this one weird trick!',
+      'Would you like to install Ask toolbar?',
+      'Press OK to continue, Cancel to cancel',
+      'Error: Success!',
+      'Click the monkey to win $1000!',
+      'You wouldn\'t download a car...',
+      'Please wait while we install updates...',
+      'Your Windows registry is corrupted!',
+      'Free_Britney_Spears_MP3.exe (3KB)',
+      'I put on my robe and wizard hat',
+      'Has Anyone Really Been Far Even as Decided?',
+      'ORLY? YARLY!',
+      'Im in ur base, killin ur d00dz',
+      'Someone set up us the bomb!',
+      'All I want for Christmas is... TOOLBAR!'
+    ];
+    
+    const popupNukeQuotes = ["Popups TERMINATED!", "Hasta la vista, baby!", "Consider that a divorce!"];
+    const toolbarNukeQuotes = ["Toolbars DELETED!", "You're fired!", "It's toolbar season!"];
+    const annihilateNukeQuotes = ["TOTAL ANNIHILATION!", "FATALITY!", "M-M-M-MONSTER KILL!"];
+    const matrixQuotes = ["There is no spoon.", "Welcome to the real world.", "Free your mind."];
+    
+    const nukeSpeechQuotes = [
+      "Say hello to my little friend!", 
+      "I'll be back.", 
+      "Come with me if you want to live.", 
+      "Yippee-ki-yay, toolbar!", 
+      "I have come here to chew bubblegum and close popups... and I'm all out of bubblegum.",
+      "Get away from her, you popup!",
+      "Game over, man! Game over!",
+      "Nuke it from orbit. It's the only way to be sure.",
+      "I AM THE LAW!",
+      "ADRIAAAAN!"
+    ];
+    
+    const finalInsults = [
+      "A Winner is You!", 
+      "Task failed successfully.", 
+      "I've seen better clicking from a broken mouse.", 
+      "Congratulations! You lasted longer than Windows ME!", 
+      "Game Over, Insert Coin!",
+      "All your RAM are belong to us.",
+      "You have died of dysentery.",
+      "WASTED",
+      "Snake? Snake?! SNAAAAKE!",
+      "Thank you Mario! But our princess is in another castle!",
+      "You require more vespene gas.",
+      "YOU DIED",
+      "Connection lost. Please check your internet connection.",
+      "Blue Screen of Death speedrun any%",
+      "Press F to pay respects to your computer."
+    ];
+    
+    const flippyTips = [
+      "It looks like you're trying to destroy your computer. Need help?",
+      "Have you tried turning it off and on again?",
+      "Did you know? Alt+F4 gives you superpowers!",
+      "Your system resources are looking delicious.",
+      "I see you're writing a suicide note for your PC!",
+      "Would you like me to format your hard drive?",
+      "Tip: More toolbars = more internet!",
+      "I'm not just a paperclip, I'm a way of life.",
+      "Remember to save your work! Just kidding, it's already gone.",
+      "Fun fact: I'm powered by your tears!"
+    ];
+    
+    const bonziPhrases = [
+      "Hello there, friend!",
+      "I can sing! I can dance!",
+      "Expand your mind!",
+      "Daisy, Daisy, give me your answer do...",
+      "I'm here to help! *wink*",
+      "Would you like to hear a joke?",
+      "I know all your passwords!",
+      "Let's surf the web together!",
+      "I'm definitely not spyware!",
+      "Bananas are good for you!"
+    ];
+
+    // --- ENHANCED AUDIO ENGINE ---
+    let audioCtx, masterGain, ambientSource;
+    const audioBuffers = {};
+    
+    function initAudio() { 
+      if (audioCtx) return; 
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)(); 
+      masterGain = audioCtx.createGain(); 
+      masterGain.gain.value = 0.6; 
+      masterGain.connect(audioCtx.destination); 
+      playAmbientSound(); 
+    }
+    
+    function playSound(type, options = {}) { 
+      if (!audioCtx) initAudio(); 
+      const now = audioCtx.currentTime; 
+      
+      switch(type) { 
+        case 'beep': { 
+          const { freq = 440, dur = 0.1, vol = 0.5 } = options; 
+          const osc = audioCtx.createOscillator(); 
+          osc.type = 'square'; 
+          osc.frequency.setValueAtTime(freq, now); 
+          const g = audioCtx.createGain(); 
+          g.gain.setValueAtTime(vol, now); 
+          g.gain.exponentialRampToValueAtTime(0.001, now + dur); 
+          osc.connect(g); 
+          g.connect(masterGain); 
+          osc.start(now); 
+          osc.stop(now + dur); 
+          break; 
+        }
+        
+        case 'windows_error': {
+          // Classic Windows error sound
+          const osc1 = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
+          osc1.frequency.value = 800;
+          osc2.frequency.value = 400;
+          const g = audioCtx.createGain();
+          g.gain.value = 0.3;
+          osc1.connect(g);
+          osc2.connect(g);
+          g.connect(masterGain);
+          osc1.start(now);
+          osc2.start(now + 0.1);
+          osc1.stop(now + 0.1);
+          osc2.stop(now + 0.2);
+          break;
+        }
+        
+        case 'modem': {
+          // 56k modem sounds
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = 'square';
+          g.gain.value = 0.1;
+          
+          // Dial tone
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.setValueAtTime(350, now + 0.5);
+          
+          // Connection sounds
+          for(let i = 0; i < 10; i++) {
+            osc.frequency.setValueAtTime(
+              Math.random() * 2000 + 500, 
+              now + 1 + i * 0.1
+            );
+          }
+          
+          osc.connect(g);
+          g.connect(masterGain);
+          osc.start(now);
+          osc.stop(now + 2);
+          break;
+        }
+        
+        case 'aol_voice': {
+          speak("You've got mail!", { pitch: 1.2, rate: 0.9 });
+          break;
+        }
+        
+        case 'icq_uh_oh': {
+          // ICQ "Uh oh!" sound
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.exponentialRampToValueAtTime(400, now + 0.1);
+          g.gain.value = 0.4;
+          osc.connect(g);
+          g.connect(masterGain);
+          osc.start(now);
+          osc.stop(now + 0.1);
+          
+          setTimeout(() => {
+            const osc2 = audioCtx.createOscillator();
+            const g2 = audioCtx.createGain();
+            osc2.frequency.setValueAtTime(600, audioCtx.currentTime);
+            osc2.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+            g2.gain.value = 0.4;
+            osc2.connect(g2);
+            g2.connect(masterGain);
+            osc2.start();
+            osc2.stop(audioCtx.currentTime + 0.1);
+          }, 150);
+          break;
+        }
+        
+        case 'hamster_dance': {
+          // Simplified hamster dance melody
+          const notes = [523, 587, 659, 523, 523, 587, 659, 523];
+          notes.forEach((freq, i) => {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.frequency.value = freq;
+            osc.type = 'square';
+            g.gain.value = 0.1;
+            osc.connect(g);
+            g.connect(masterGain);
+            osc.start(now + i * 0.1);
+            osc.stop(now + i * 0.1 + 0.08);
+          });
+          break;
+        }
+        
+        case 'matrix_woosh': {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(100, now);
+          filter.frequency.exponentialRampToValueAtTime(2000, now + 0.5);
+          
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(100, now);
+          osc.frequency.exponentialRampToValueAtTime(50, now + 1);
+          
+          g.gain.setValueAtTime(0.5, now);
+          g.gain.exponentialRampToValueAtTime(0.001, now + 1);
+          
+          osc.connect(filter);
+          filter.connect(g);
+          g.connect(masterGain);
+          
+          osc.start(now);
+          osc.stop(now + 1);
+          break;
+        }
+        
+        case 'nuke_explosion': { 
+          const dur = 1.5; 
+          const buf = audioCtx.createBuffer(1, audioCtx.sampleRate * dur, audioCtx.sampleRate); 
+          const data = buf.getChannelData(0); 
+          for (let i = 0; i < data.length; i++) 
+            data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 4); 
+          const noise = audioCtx.createBufferSource(); 
+          noise.buffer = buf; 
+          const osc = audioCtx.createOscillator(); 
+          osc.type = 'sawtooth'; 
+          osc.frequency.setValueAtTime(440, now); 
+          osc.frequency.exponentialRampToValueAtTime(50, now + 1); 
+          const filter = audioCtx.createBiquadFilter(); 
+          filter.type = 'lowpass'; 
+          filter.frequency.setValueAtTime(1200, now); 
+          filter.frequency.linearRampToValueAtTime(100, now + dur * 0.7); 
+          noise.connect(filter); 
+          osc.connect(filter); 
+          filter.connect(masterGain); 
+          noise.start(now); 
+          osc.start(now); 
+          noise.stop(now+dur); 
+          osc.stop(now+dur); 
+          break; 
+        }
+        
+        case 'achievement': { 
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, i) => {
+            const osc = audioCtx.createOscillator();
+            const g = audioCtx.createGain();
+            osc.type = "sine";
+            osc.frequency.value = freq;
+            g.gain.value = 0.3;
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.3);
+            osc.connect(g);
+            g.connect(masterGain);
+            osc.start(now + i * 0.1);
+            osc.stop(now + i * 0.1 + 0.3);
+          });
+          break;
+        }
+        
+        case 'startup': {
+          // Windows 95 startup sound tribute
+          const osc1 = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
+          const g1 = audioCtx.createGain();
+          const g2 = audioCtx.createGain();
+          
+          osc1.frequency.setValueAtTime(261.63, now); // C4
+          osc1.frequency.setValueAtTime(329.63, now + 0.2); // E4
+          osc1.frequency.setValueAtTime(392.00, now + 0.4); // G4
+          
+          osc2.frequency.setValueAtTime(130.81, now); // C3
+          osc2.frequency.setValueAtTime(164.81, now + 0.2); // E3
+          osc2.frequency.setValueAtTime(196.00, now + 0.4); // G3
+          
+          g1.gain.value = 0.2;
+          g2.gain.value = 0.1;
+          
+          osc1.connect(g1);
+          osc2.connect(g2);
+          g1.connect(masterGain);
+          g2.connect(masterGain);
+          
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + 0.8);
+          osc2.stop(now + 0.8);
+          break;
+        }
+      } 
+    }
+    
+    function playAmbientSound() { 
+      const buf = audioCtx.createBuffer(2, audioCtx.sampleRate * 3, audioCtx.sampleRate); 
+      for (let channel = 0; channel < 2; channel++) { 
+        const data = buf.getChannelData(channel); 
+        for (let i = 0; i < data.length; i++) {
+          // Add some "digital noise" and modem-like sounds
+          data[i] = Math.random() * 0.02 - 0.01;
+          if (Math.random() < 0.001) {
+            data[i] += Math.sin(i / 10) * 0.1; // Occasional modem noise
+          }
+        }
+      } 
+      ambientSource = audioCtx.createBufferSource(); 
+      ambientSource.buffer = buf; 
+      ambientSource.loop = true; 
+      const gain = audioCtx.createGain(); 
+      gain.gain.value = 0.1; 
+      ambientSource.connect(gain); 
+      gain.connect(masterGain); 
+      ambientSource.start(); 
+    }
+    
+    function speak(text, options = {}) { 
+      if ('speechSynthesis' in window) { 
+        const { pitch = 1.5, rate = 1.2 } = options; 
+        const utterance = new SpeechSynthesisUtterance(text); 
+        utterance.pitch = pitch; 
+        utterance.rate = rate; 
+        window.speechSynthesis.speak(utterance); 
+      } 
+    }
+
+    // --- ENHANCED BACKGROUND ANIMATIONS ---
+    let worm, mouseParticles = [], stars = [];
+    
+    function setupBackgroundAnims() { 
+      DOM.bgCtx = DOM.bgCanvas.getContext('2d'); 
+      DOM.bgCanvas.width = window.innerWidth; 
+      DOM.bgCanvas.height = window.innerHeight;
+      
+      DOM.matrixCtx = DOM.matrixCanvas.getContext('2d');
+      DOM.matrixCanvas.width = window.innerWidth;
+      DOM.matrixCanvas.height = window.innerHeight;
+      
+      // Initialize worm
+      worm = { 
+        x: rnd(100, DOM.bgCanvas.width - 100), 
+        y: rnd(100, DOM.bgCanvas.height - 100), 
+        length: 50, 
+        segments: [], 
+        speed: 2, 
+        angle: Math.random() * Math.PI * 2, 
+        color: 'lime' 
+      };
+      
+      // Initialize stars
+      for(let i = 0; i < 100; i++) {
+        stars.push({
+          x: Math.random() * DOM.bgCanvas.width,
+          y: Math.random() * DOM.bgCanvas.height,
+          size: Math.random() * 2,
+          speed: Math.random() * 0.5 + 0.1
+        });
+      }
+      
+      // Mouse trail effect
+      document.addEventListener('mousemove', e => { 
+        if (!simState.running) return;
+        
+        // Create cursor trail
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        trail.style.backgroundColor = getComputedStyle(document.documentElement)
+          .getPropertyValue('--cursor-trail-color');
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 500);
+        
+        // Canvas particles
+        mouseParticles.push({ 
+          x: e.clientX, 
+          y: e.clientY, 
+          life: 25, 
+          size: rnd(2,6), 
+          color: `rgb(${rnd(200,255)}, 0, ${rnd(100,255)})`,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 0.5) * 4
+        }); 
+      }); 
+    }
+    
+    function drawBackgroundAnims() { 
+      // Fade effect
+      DOM.bgCtx.fillStyle = 'rgba(0, 0, 0, 0.05)'; 
+      DOM.bgCtx.fillRect(0, 0, DOM.bgCanvas.width, DOM.bgCanvas.height);
+      
+      // Draw stars
+      DOM.bgCtx.fillStyle = 'white';
+      stars.forEach(star => {
+        DOM.bgCtx.globalAlpha = Math.random() * 0.5 + 0.5;
+        DOM.bgCtx.fillRect(star.x, star.y, star.size, star.size);
+        star.y += star.speed;
+        if (star.y > DOM.bgCanvas.height) {
+          star.y = 0;
+          star.x = Math.random() * DOM.bgCanvas.width;
+        }
+      });
+      DOM.bgCtx.globalAlpha = 1;
+      
+      // Update and draw worm
+      worm.angle += (Math.random() - 0.5) * 0.5; 
+      worm.x += Math.cos(worm.angle) * worm.speed; 
+      worm.y += Math.sin(worm.angle) * worm.speed;
+      
+      // Bounce off walls
+      if (worm.x < 0 || worm.x > DOM.bgCanvas.width || 
+          worm.y < 0 || worm.y > DOM.bgCanvas.height) { 
+        worm.angle += Math.PI; 
+      }
+      
+      worm.segments.push({x: worm.x, y: worm.y}); 
+      if(worm.segments.length > worm.length) worm.segments.shift();
+      
+      // Draw worm with gradient
+      worm.segments.forEach((seg, i) => {
+        const alpha = i / worm.segments.length;
+        DOM.bgCtx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+        DOM.bgCtx.fillRect(seg.x, seg.y, 3 + i * 0.05, 3 + i * 0.05);
+      });
+      
+      // Draw mouse particles
+      mouseParticles.forEach((p, i) => { 
+        p.life--; 
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.1; // gravity
+        
+        if (p.life <= 0) { 
+          mouseParticles.splice(i, 1); 
+        } else { 
+          DOM.bgCtx.fillStyle = p.color; 
+          DOM.bgCtx.globalAlpha = p.life / 25; 
+          DOM.bgCtx.fillRect(p.x, p.y, p.size, p.size); 
+          DOM.bgCtx.globalAlpha = 1.0; 
+        } 
+      });
+      
+      // Matrix rain effect
+      if (simState.matrixActive) {
+        drawMatrixRain();
+      }
+    }
+    
+    function drawMatrixRain() {
+      DOM.matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      DOM.matrixCtx.fillRect(0, 0, DOM.matrixCanvas.width, DOM.matrixCanvas.height);
+      DOM.matrixCtx.fillStyle = '#0f0';
+      DOM.matrixCtx.font = '15px monospace';
+      
+      if (!window.matrixDrops) {
+        window.matrixDrops = [];
+        const columns = DOM.matrixCanvas.width / 15;
+        for(let i = 0; i < columns; i++) {
+          window.matrixDrops[i] = 1;
+        }
+      }
+      
+      window.matrixDrops.forEach((y, index) => {
+        const text = String.fromCharCode(Math.random() * 128);
+        const x = index * 15;
+        DOM.matrixCtx.fillText(text, x, y * 15);
+        
+        if (y * 15 > DOM.matrixCanvas.height && Math.random() > 0.975) {
+          window.matrixDrops[index] = 0;
+        }
+        window.matrixDrops[index]++;
+      });
+    }
+
+    // --- SIMULATION LIFECYCLE ---
+    function startSim(diff) { 
+      simState.running = true; 
+      simState.difficulty = diff; 
+      simState.startTime = Date.now();
+      DOM.startScreen.style.display = 'none'; 
+      DOM.nukeControls.style.display = 'flex';
+      DOM.marquee.textContent = `🚨 SYSTEM CORRUPTION IN PROGRESS... | DIFFICULTY: ${diff.toUpperCase()} | Y2K COMPLIANT: NO 🚨`;
+      
+      setupBackgroundAnims(); 
+      initAudio();
+      playSound('startup');
+      
+      const s = difficultySettings[diff]; 
+      simState.intervals.push(setInterval(gameLoop, 50)); 
+      simState.intervals.push(setInterval(addToolbar, s.tb)); 
+      simState.intervals.push(setInterval(spawnPopup, s.pu)); 
+      simState.intervals.push(setInterval(spawnDesktopIcon, s.icon)); 
+      simState.intervals.push(setInterval(showFlippy, 25000)); 
+      simState.intervals.push(setInterval(showBonzi, 30000));
+      simState.intervals.push(setInterval(playRandomSystemSound, 15000));
+      simState.intervals.push(setInterval(updateDVDLogo, 50));
+      simState.intervals.push(setInterval(randomEvent, 10000));
+      
+      // Nightmare mode special effects
+      if (diff === 'nightmare') {
+        DOM.body.classList.add('scan-lines');
+        simState.scanLines = true;
+        setInterval(() => {
+          if (Math.random() < 0.3) {
+            DOM.browser.classList.add('browser-tilted');
+            setTimeout(() => DOM.browser.classList.remove('browser-tilted'), 2000);
+          }
+        }, 5000);
+      }
+    }
+    
+    function gameLoop() { 
+      if (!simState.running) return; 
+      updateTimer(); 
+      updateResources(); 
+      updateIntegrity(); 
+      updateScore();
+      drawBackgroundAnims(); 
+      updateUI(); 
+      checkAchievements(); 
+      checkEndCondition();
+      
+      // Random events
+      if (Math.random() < 0.0005) triggerBlueLobster();
+      if (Math.random() < 0.0003) triggerY2KWarning();
+      if (Math.random() < 0.0002 && !DOM.dvdLogo.style.display) showDVDLogo();
+    }
+    
+    function stopSim() { 
+      simState.running = false; 
+      simState.intervals.forEach(clearInterval); 
+      if (ambientSource) ambientSource.stop();
+      
+      DOM.body.className = ''; 
+      DOM.desktop.className = ''; 
+      DOM.bsod.style.display = 'flex';
+      
+      playSound('windows_error');
+      
+      const timeSurvived = Math.floor((Date.now() - simState.startTime) / 1000); 
+      const finalScore = Math.floor(simState.score);
+      
+      DOM.bsod.querySelector('#final-score').innerHTML = ` 
+        <p>⏱️ Survival Time: ${timeSurvived}s</p> 
+        <p>🏆 Final Score: ${finalScore}</p>
+        <p>❌ Popups Closed: ${simState.counts.closedPopups}</p> 
+        <p>🔧 Toolbars Cleared: ${simState.counts.clearedToolbars}</p>
+        <p>💥 Total Nukes Used: ${simState.counts.nukesUsed}</p>
+        <p>🖱️ Icons Clicked: ${simState.counts.iconsClicked}</p>
+        <p>🐵 Bonzi Interactions: ${simState.counts.bonziClicks}</p>
+      `; 
+      
+      document.getElementById('final-insult').textContent = finalInsults[rnd(0, finalInsults.length - 1)];
+    }
+    
+    function restartGame() { location.reload(); }
+
+    // --- UI & CORE MECHANICS ---
+    function updateTimer() { 
+      document.getElementById('timer').textContent = Math.floor((Date.now() - simState.startTime) / 1000); 
+    }
+    
+    function updateScore() {
+      const mult = difficultySettings[simState.difficulty].scoreMultiplier;
+      simState.score += (0.1 * mult); // Time survived bonus
+      simState.score += (simState.counts.closedPopups * 0.5 * mult); // Popup closing bonus
+      simState.score += (simState.counts.clearedToolbars * 1 * mult); // Toolbar clearing bonus
+    }
+    
+    function updateUI() { 
+      document.getElementById('cpu-usage').textContent = Math.round(simState.resources.cpu); 
+      document.getElementById('ram-usage').textContent = Math.round(simState.resources.ram); 
+      document.getElementById('modem-speed').textContent = simState.resources.modemSpeed + 'k';
+      document.getElementById('pop-closed-count').textContent = simState.counts.closedPopups; 
+      document.getElementById('tb-cleared-count').textContent = simState.counts.clearedToolbars; 
+      document.getElementById('nuke-count').textContent = simState.counts.nukesUsed; 
+      document.getElementById('icon-clicks').textContent = simState.counts.iconsClicked;
+      document.getElementById('score').textContent = Math.floor(simState.score);
+      
+      const integrityPercent = Math.max(0, simState.integrity); 
+      const integrityBar = document.getElementById('integrity-bar'); 
+      integrityBar.style.width = integrityPercent + '%';
+      
+      // Update integrity color based on level
+      if (integrityPercent < 25) {
+        integrityBar.style.backgroundColor = '#f00';
+        document.documentElement.style.setProperty('--cursor-trail-color', '#f00');
+      } else if (integrityPercent < 60) {
+        integrityBar.style.backgroundColor = '#ff0';
+        document.documentElement.style.setProperty('--cursor-trail-color', '#ff0');
+      } else {
+        integrityBar.style.backgroundColor = '#0f0';
+        document.documentElement.style.setProperty('--cursor-trail-color', '#0f0');
+      }
+      
+      // Update worm based on integrity
+      worm.speed = 2 + (100 - simState.integrity) / 20; 
+      worm.length = 50 + (100 - simState.integrity);
+      if (simState.integrity < 60) worm.color = 'yellow'; 
+      if (simState.integrity < 25) worm.color = 'red';
+      
+      // Desktop degradation
+      if (simState.integrity < 25) {
+        DOM.desktop.className = 'desktop-degrade-3';
+        DOM.body.classList.add('screen-shake');
+      } else if (simState.integrity < 50) {
+        DOM.desktop.className = 'desktop-degrade-2';
+        DOM.body.classList.remove('screen-shake');
+      } else if (simState.integrity < 75) {
+        DOM.desktop.className = 'desktop-degrade-1';
+      } else {
+        DOM.desktop.className = '';
+      }
+      
+      // Browser glitch effect at high CPU
+      if (simState.resources.cpu > 90) {
+        DOM.browser.classList.add('browser-glitched');
+        DOM.body.classList.add('major-glitch');
+      } else {
+        DOM.browser.classList.remove('browser-glitched');
+        DOM.body.classList.remove('major-glitch');
+      }
+      
+      updateNukeButton(); 
+      updateAmbientSound();
+    }
+    
+    function updateNukeButton() { 
+      const cooldowns = ['nuke', 'matrix'];
+      cooldowns.forEach(type => {
+        if (simState.cooldowns[type] > 0) { 
+          simState.cooldowns[type] -= 50 / 1000;
+          if (type === 'nuke') {
+            DOM.nukeBtns.forEach(btn => { 
+              if (!btn.id.includes('matrix')) {
+                btn.disabled = true; 
+                btn.querySelector('.cooldown-timer').textContent = `(${Math.ceil(simState.cooldowns[type])}s)`; 
+              }
+            });
+          } else if (type === 'matrix') {
+            const matrixBtn = document.getElementById('matrixBtn');
+            if (matrixBtn) {
+              matrixBtn.disabled = true;
+              matrixBtn.querySelector('.cooldown-timer').textContent = `(${Math.ceil(simState.cooldowns[type])}s)`;
+            }
+          }
+        } else { 
+          if (type === 'nuke') {
+            DOM.nukeBtns.forEach(btn => { 
+              if (!btn.id.includes('matrix')) {
+                btn.disabled = false; 
+                btn.querySelector('.cooldown-timer').textContent = '(Ready)'; 
+              }
+            });
+          } else if (type === 'matrix') {
+            const matrixBtn = document.getElementById('matrixBtn');
+            if (matrixBtn) {
+              matrixBtn.disabled = false;
+              matrixBtn.querySelector('.cooldown-timer').textContent = '(Ready)';
+            }
+          }
+        } 
+      });
+    }
+    
+    function updateResources() { 
+      const baseCpu = simState.elements.toolbars.length * 2 + 
+                      simState.elements.popups.length * 1.5 + 
+                      simState.elements.icons.length * 0.5;
+      const baseRam = 128 + simState.elements.toolbars.length * 12 + 
+                      simState.elements.popups.length * 6 + 
+                      simState.elements.icons.length * 3;
+      
+      simState.resources.cpu = baseCpu + (Math.random() * 10 - 5); 
+      simState.resources.ram = baseRam + (Math.random() * 20 - 10);
+      
+      // Modem speed degradation
+      simState.resources.modemSpeed = Math.max(2.4, 28.8 - simState.elements.popups.length * 0.5);
+      
+      if (simState.resources.cpu > 100) simState.resources.cpu = 100;
+    }
+    
+    function updateIntegrity(amount = 0) { 
+      simState.integrity += amount; 
+      const drain = (simState.resources.cpu / 100) * difficultySettings[simState.difficulty].integrityDrain; 
+      simState.integrity -= drain; 
+      if (simState.integrity > 100) simState.integrity = 100; 
+    }
+    
+    function checkEndCondition() { 
+      if (simState.integrity <= 0) {
+        // Y2K special ending
+        if (Math.random() < 0.1) {
+          triggerY2KEnding();
+        } else {
+          stopSim();
+        }
+      }
+    }
+
+    // --- ENHANCED ANNOYANCE GENERATORS ---
+    function addToolbar() { 
+      if (!simState.running) return; 
+      simState.counts.toolbars++; 
+      updateIntegrity(-1.5);
+      
+      const tb = document.createElement('div'); 
+      tb.className = 'toolbar';
+      
+      // Random toolbar styles
+      const style = Math.random();
+      if (style < 0.1) {
+        tb.style.background = 'linear-gradient(to right, #ff0, #f00, #ff0)';
+      } else if (style < 0.2) {
+        tb.style.background = '#000';
+      }
+      
+      const numItems = rnd(3, 6); 
+      for (let i = 0; i < numItems; i++) { 
+        tb.appendChild(createToolbarItem()); 
+        if (Math.random() > 0.6) tb.appendChild(document.createElement('div')).className = 'toolbar-separator'; 
+      }
+      
+      DOM.toolbars.prepend(tb); 
+      simState.elements.toolbars.push(tb);
+      
+      playSound('beep', { freq: 200, dur: 0.05, vol: 0.3 });
+      
+      // Chance for special toolbar
+      if (Math.random() < 0.1) {
+        speak("New toolbar installed!", { pitch: 2, rate: 1.5 });
+      }
+    }
+    
+    function createToolbarItem() { 
+      const btn = document.createElement('button'); 
+      btn.className = 'toolbar-item';
+      
+      const contentType = rnd(1, 4); 
+      if (contentType === 1) { 
+        btn.textContent = toolbarData.labels[rnd(0, toolbarData.labels.length - 1)]; 
+      } else if (contentType === 2) { 
+        const img = document.createElement('img'); 
+        img.src = toolbarData.icons[rnd(0, toolbarData.icons.length - 1)]; 
+        btn.appendChild(img); 
+      } else if (contentType === 3) { 
+        const img = document.createElement('img'); 
+        img.src = toolbarData.icons[rnd(0, toolbarData.icons.length - 1)]; 
+        btn.appendChild(img); 
+        btn.append(" " + toolbarData.labels[rnd(0, toolbarData.labels.length - 1)]); 
+      } else {
+        // Emoji toolbar items
+        const emojis = ['😀', '💀', '🔥', '💩', '🎉', '🚨', '💣', '🦠', '👽', '🤖'];
+        btn.textContent = emojis[rnd(0, emojis.length - 1)] + ' Click Me!';
+      }
+      
+      btn.style.fontFamily = toolbarData.fonts[rnd(0, toolbarData.fonts.length - 1)];
+      
+      // Special toolbar item types
+      const r = Math.random(); 
+      if (r < 0.15) { 
+        btn.className += ' toolbar-urgent';
+      } else if (r < 0.25) { 
+        btn.className += ' toolbar-rainbow';
+      }
+      
+      btn.onclick = () => { 
+        updateIntegrity(-2); 
+        simState.score -= 5;
+        
+        // Random effects
+        const effect = Math.random();
+        if (effect < 0.2) {
+          spawnPopup(); 
+          spawnPopup();
+        } else if (effect < 0.3) {
+          addToolbar();
+        } else if (effect < 0.4) {
+          DOM.body.style.filter = 'hue-rotate(180deg)';
+          setTimeout(() => DOM.body.style.filter = '', 1000);
+        } else {
+          spawnPopup();
+        }
+        
+        playSound('beep', { freq: 1000, dur: 0.05 });
+      };
+      
+      return btn; 
+    }
+    
+    function closePopup(popupElement) {
+        popupElement.remove();
+        simState.counts.closedPopups++;
+        simState.elements.popups = simState.elements.popups.filter(p => p !== popupElement);
+        updateIntegrity(1);
+        simState.score += 10 * difficultySettings[simState.difficulty].scoreMultiplier;
+        playSound('close_popup');
+    }
+    
+    function spawnPopup() {
+        if (!simState.running) return;
+        simState.counts.popups++;
+        updateIntegrity(-0.5);
+        
+        const win = document.createElement('div');
+        win.className = 'popup-window';
+        
+        // Random popup types
+        const popupType = Math.random();
+        if (popupType < 0.1) {
+            win.className += ' popup-urgent';
+        } else if (popupType < 0.2) {
+            win.className += ' popup-fake-close';
+        }
+        
+        win.style.width = rnd(240, 400) + 'px';
+        win.style.left = rnd(20, window.innerWidth - 420) + 'px';
+        win.style.top = rnd(50, window.innerHeight - 200) + 'px';
+        
+        const titles = ['System Alert', 'Windows Update', 'Free Offer!', 'Congratulations!', 
+                       'Warning!', 'Error', 'You Won!', 'Download Complete', 'New Message'];
+        const title = titles[rnd(0, titles.length - 1)];
+        
+        win.innerHTML = `
+            <div class="popup-header">
+                <span>${title}</span>
+                <span class="close-btn">X</span>
+            </div>
+            <div class="popup-body">
+                ${popupMsgs[rnd(0, popupMsgs.length-1)]}
+                ${Math.random() < 0.3 ? '<br><button onclick="alert(\'Never trust a popup!\')">OK</button>' : ''}
+            </div>
+        `;
+        
+        // Fake close button behavior
+        if (win.className.includes('popup-fake-close')) {
+            win.querySelector('.close-btn').onclick = (e) => {
+                e.stopPropagation();
+                speak("Nice try!", { pitch: 2, rate: 1.5 });
+                spawnPopup();
+                updateIntegrity(-5);
+            };
+        } else {
+            win.querySelector('.close-btn').onclick = (e) => { 
+                e.stopPropagation(); 
+                closePopup(win); 
+            };
+        }
+        
+        win.onclick = () => {
+            if (!win.className.includes('popup-fake-close')) {
+                closePopup(win);
+            }
+        };
+        
+        makeDraggable(win);
+        DOM.body.appendChild(win);
+        simState.elements.popups.push(win);
+        
+        // Sound effects
+        if (popupType < 0.1) {
+            playSound('windows_error');
+        } else if (Math.random() < 0.2) {
+            playSound('icq_uh_oh');
+        }
+    }
+    
+    function spawnDesktopIcon() { 
+      if (!simState.running) return;
+      
+      const iconTypes = [
+        { name: 'da_baby.exe', img: 'https://i.imgur.com/zoQ3k86.gif', bad: true },
+        { name: 'My Computer', img: 'https://i.imgur.com/v8x6e5J.png', bad: false },
+        { name: 'Recycle Bin (Full)', img: 'https://i.imgur.com/DqLY5VV.png', bad: false },
+        { name: 'Internet Explorer', img: 'https://i.imgur.com/s6lDgOo.png', bad: true },
+        { name: 'Napster.exe', img: 'https://i.imgur.com/3xTqLhz.png', bad: true },
+        { name: 'LOVE-LETTER-FOR-YOU.txt.vbs', img: 'https://i.imgur.com/khjLUo6.png', bad: true },
+        { name: 'Hot_Singles.exe', img: 'https://i.imgur.com/xKQxoTb.png', bad: true },
+        { name: 'System32', img: 'https://i.imgur.com/UvPUfHF.png', bad: false },
+        { name: 'Homework', img: 'https://i.imgur.com/UvPUfHF.png', bad: false },
+        { name: 'Not Porn', img: 'https://i.imgur.com/UvPUfHF.png', bad: true }
+      ];
+      
+      const iconType = iconTypes[rnd(0, iconTypes.length - 1)];
+      simState.counts.icons++;
+      
+      const icon = document.createElement('div'); 
+      icon.className = 'desktop-icon'; 
+      icon.style.left = rnd(10, window.innerWidth - 90) + 'px'; 
+      icon.style.top = rnd(10, window.innerHeight - 90) + 'px';
+      
+      icon.innerHTML = `<img src="${iconType.img}"><p>${iconType.name}</p>`;
+      
+      icon.onclick = () => { 
+        simState.counts.iconsClicked++;
+        
+        if (iconType.bad) {
+          updateIntegrity(-10);
+          simState.score -= 20;
+          
+          // Spawn chaos
+          for(let i = 0; i < 3; i++) {
+            setTimeout(() => {
+              addToolbar();
+              spawnPopup();
+            }, i * 100);
+          }
+          
+          playSound('windows_error');
+          speak("Why did you click that?!", { pitch: 0.8, rate: 1.5 });
+          
+          if (iconType.name.includes('baby')) {
+            if (!simState.achievements.clickBaby) { 
+              showAchievement('Achievement: You Monster!', 'Why would you click a baby?!'); 
+              simState.achievements.clickBaby = true; 
+            }
+          }
+        } else {
+          updateIntegrity(-2);
+          spawnPopup();
+          playSound('beep', { freq: 150, dur: 0.2, vol: 1 });
+          
+          if (!simState.achievements.clickIcon) { 
+            showAchievement('Achievement: Curiosity', 'It killed the PC'); 
+            simState.achievements.clickIcon = true; 
+          }
+        }
+        
+        icon.remove(); 
+        simState.elements.icons = simState.elements.icons.filter(i => i !== icon);
+      };
+      
+      makeDraggable(icon); 
+      DOM.desktop.appendChild(icon); 
+      simState.elements.icons.push(icon);
+    }
+
+    // --- ENHANCED PLAYER ACTIONS ---
+    function showNukeMessage(message) {
+        DOM.nukeText.textContent = message;
+        DOM.nukeText.style.display = 'block';
+        setTimeout(() => DOM.nukeText.style.display = 'none', 2000);
+    }
+    
+    function triggerNukeEffects(textQuotes) {
+        simState.cooldowns.nuke = cooldownSettings[simState.difficulty];
+        simState.counts.nukesUsed++;
+        simState.score += 50 * difficultySettings[simState.difficulty].scoreMultiplier;
+        
+        playSound('nuke_explosion');
+        document.getElementById('explosion').style.display = 'block';
+        setTimeout(() => document.getElementById('explosion').style.display = 'none', 1000);
+        
+        showNukeMessage(textQuotes[rnd(0, textQuotes.length - 1)]);
+        speak(nukeSpeechQuotes[rnd(0, nukeSpeechQuotes.length-1)], { pitch: 0.8, rate: 0.9 });
+        
+        // Screen shake
+        DOM.body.classList.add('screen-shake');
+        setTimeout(() => DOM.body.classList.remove('screen-shake'), 1000);
+    }
+    
+    function useNukePopups() { 
+      if (simState.cooldowns.nuke > 0) return;
+      triggerNukeEffects(popupNukeQuotes);
+      
+      const popupsToRemove = simState.elements.popups.length;
+      simState.elements.popups.forEach(win => win.remove());
+      simState.counts.closedPopups += popupsToRemove;
+      simState.elements.popups = [];
+      updateIntegrity(popupsToRemove * 0.25);
+      
+      if (!simState.achievements.useNuke) { 
+        simState.achievements.useNuke = true; 
+        showAchievement('Achievement: Scorched Earth', 'Nuclear option engaged!'); 
+      }
+    }
+    
+    function useNukeToolbars() { 
+      if (simState.cooldowns.nuke > 0) return;
+      triggerNukeEffects(toolbarNukeQuotes);
+      
+      const toolbarsToRemove = simState.elements.toolbars.length;
+      simState.elements.toolbars.forEach(tb => tb.remove());
+      simState.counts.clearedToolbars += toolbarsToRemove;
+      simState.elements.toolbars = [];
+      simState.counts.toolbars = 0;
+      updateIntegrity(toolbarsToRemove * 0.5);
+    }
+    
+    function useAnnihilate() { 
+      if (simState.cooldowns.nuke > 0) return;
+      triggerNukeEffects(annihilateNukeQuotes);
+      
+      const popupsToRemove = simState.elements.popups.length;
+      simState.elements.popups.forEach(win => win.remove());
+      simState.counts.closedPopups += popupsToRemove;
+      simState.elements.popups = [];
+      
+      const toolbarsToRemove = simState.elements.toolbars.length;
+      simState.elements.toolbars.forEach(tb => tb.remove());
+      simState.counts.clearedToolbars += toolbarsToRemove;
+      simState.elements.toolbars = [];
+      simState.counts.toolbars = 0;
+      
+      updateIntegrity(-20); // Costs integrity!
+      
+      // Extra chaos
+      DOM.body.style.filter = 'invert(1)';
+      setTimeout(() => DOM.body.style.filter = '', 500);
+    }
+    
+    function useMatrix() {
+      if (simState.cooldowns.matrix > 0) return;
+      
+      simState.cooldowns.matrix = 30; // Longer cooldown
+      simState.matrixActive = true;
+      DOM.matrixCanvas.classList.add('matrix-active');
+      
+      playSound('matrix_woosh');
+      showNukeMessage(matrixQuotes[rnd(0, matrixQuotes.length - 1)]);
+      speak("Follow the white rabbit", { pitch: 0.7, rate: 0.8 });
+      
+      // Slow down time
+      const originalDrain = difficultySettings[simState.difficulty].integrityDrain;
+      difficultySettings[simState.difficulty].integrityDrain *= 0.3;
+      
+      // Clear some annoyances
+      const popupsToRemove = Math.floor(simState.elements.popups.length / 2);
+      for(let i = 0; i < popupsToRemove; i++) {
+        if (simState.elements.popups[i]) {
+          simState.elements.popups[i].remove();
+          simState.counts.closedPopups++;
+        }
+      }
+      simState.elements.popups = simState.elements.popups.filter(p => p.parentNode);
+      
+      setTimeout(() => {
+        simState.matrixActive = false;
+        DOM.matrixCanvas.classList.remove('matrix-active');
+        difficultySettings[simState.difficulty].integrityDrain = originalDrain;
+      }, 10000);
+      
+      if (!simState.achievements.matrix) {
+        simState.achievements.matrix = true;
+        showAchievement('Achievement: The One', 'You can see the code');
+      }
+    }
+    
+    function toggleFlip() { 
+      DOM.body.style.transform = DOM.body.style.transform === 'rotate(180deg)' ? '' : 'rotate(180deg)';
+      playSound('hamster_dance');
+      updateIntegrity(-2);
+    }
+    
+    function agreeToTerms() { 
+      const btn = document.getElementById('agreeBtn'); 
+      if (btn.disabled) return;
+      
+      playSound('windows_error');
+      
+      // Spawn chaos
+      for(let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          addToolbar();
+          spawnPopup();
+        }, i * 200);
+      }
+      
+      updateIntegrity(-15); 
+      toggleFlip();
+      
+      btn.textContent = "WHY?! WHY WOULD YOU DO THAT?!"; 
+      btn.disabled = true;
+      btn.style.background = '#f00';
+      
+      speak("Congratulations! You've installed malware!", { pitch: 2, rate: 1.5 });
+      
+      if (!simState.achievements.agree) { 
+        showAchievement('Achievement: Blind Trust', 'Read the fine print next time!'); 
+        simState.achievements.agree = true; 
+      }
+    }
+    
+    function downloadRam() {
+      const btn = event.target;
+      btn.disabled = true;
+      btn.textContent = "Downloading...";
+      
+      playSound('modem');
+      
+      // Fake progress
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        btn.textContent = `Downloading... ${progress}%`;
+        
+        if (progress >= 100) {
+          clearInterval(interval);
+          btn.textContent = "ERROR: RAM IS A PHYSICAL COMPONENT";
+          simState.resources.ram -= 64; // Lose RAM instead!
+          updateIntegrity(-10);
+          
+          if (!simState.achievements.ramDownload) {
+            simState.achievements.ramDownload = true;
+            showAchievement('Achievement: Big Brain Time', 'You can\'t download hardware!');
+          }
+        }
+      }, 200);
+    }
+    
+    // --- ENHANCED AI ASSISTANTS ---
+    function showFlippy() { 
+      if (!simState.running) return;
+      
+      const tip = flippyTips[rnd(0, flippyTips.length-1)]; 
+      document.getElementById('flippy-text').textContent = tip; 
+      DOM.flippy.style.display = 'block';
+      
+      playSound('beep', { freq: 800, dur: 0.1 });
+      speak(tip, { pitch: 2, rate: 1.3 });
+    }
+    
+    function dismissFlippy() { 
+      simState.counts.flippyDismissals++;
+      const r = Math.random();
+      
+      if (r < 0.3) { 
+        const msg = "I can't let you do that, Dave."; 
+        document.getElementById('flippy-text').textContent = msg; 
+        speak(msg, { pitch: 0.8, rate: 0.9 }); 
+        updateIntegrity(-5);
+        
+        // Clippy revenge
+        spawnPopup();
+        spawnPopup();
+      } else if (r < 0.6) {
+        const msg = "Fine! See if I care!";
+        document.getElementById('flippy-text').textContent = msg;
+        speak(msg, { pitch: 2.5, rate: 1.5 });
+        
+        setTimeout(() => {
+          DOM.flippy.style.display = 'none';
+        }, 2000);
+      } else { 
+        DOM.flippy.style.display = 'none'; 
+      }
+    }
+    
+    function showBonzi() {
+      if (!simState.running) return;
+      
+      DOM.bonzi.style.display = 'block';
+      const speech = document.getElementById('bonzi-speech');
+      speech.style.display = 'block';
+      speech.textContent = bonziPhrases[rnd(0, bonziPhrases.length - 1)];
+      
+      speak(speech.textContent, { pitch: 0.8, rate: 1.1 });
+      
+      setTimeout(() => {
+        speech.style.display = 'none';
+      }, 3000);
+    }
+    
+    function bonziClick() {
+      simState.counts.bonziClicks++;
+      updateIntegrity(-3);
+      
+      const speech = document.getElementById('bonzi-speech');
+      speech.style.display = 'block';
+      
+      if (simState.counts.bonziClicks < 5) {
+        speech.textContent = bonziPhrases[rnd(0, bonziPhrases.length - 1)];
+      } else if (simState.counts.bonziClicks < 10) {
+        speech.textContent = "Stop poking me!";
+      } else {
+        speech.textContent = "THAT'S IT!";
+        // Bonzi revenge
+        for(let i = 0; i < 10; i++) {
+          setTimeout(() => spawnPopup(), i * 100);
+        }
+      }
+      
+      speak(speech.textContent, { pitch: 0.8, rate: 1.1 });
+      
+      // Bonzi jumps
+      DOM.bonzi.style.animation = 'none';
+      setTimeout(() => {
+        DOM.bonzi.style.animation = 'bonziDance 2s infinite';
+      }, 10);
+      
+      if (simState.counts.bonziClicks >= 10 && !simState.achievements.bonzi10) {
+        simState.achievements.bonzi10 = true;
+        showAchievement('Achievement: Monkey Business', 'You angered the purple ape!');
+      }
+      
+      setTimeout(() => {
+        speech.style.display = 'none';
+      }, 2000);
+    }
+    
+    // --- EASTER EGGS & SPECIAL EVENTS ---
+    function triggerBlueLobster() { 
+      DOM.jumpscare.style.backgroundImage = 'url(https://i.imgur.com/YxJRn2s.png)'; 
+      DOM.jumpscare.style.display = 'block';
+      
+      playSound('jumpscare');
+      
+      setTimeout(() => DOM.jumpscare.style.display = 'none', 300);
+    }
+    
+    function triggerY2KWarning() {
+      if (simState.achievements.y2k) return;
+      
+      DOM.y2kCountdown.style.display = 'block';
+      DOM.y2kCountdown.textContent = 'Y2K ERROR IN: 10';
+      
+      playSound('windows_error');
+      speak("Y2K bug detected!", { pitch: 0.5, rate: 0.8 });
+      
+      let countdown = 10;
+      const interval = setInterval(() => {
+        countdown--;
+        DOM.y2kCountdown.textContent = `Y2K ERROR IN: ${countdown}`;
+        
+        if (countdown <= 0) {
+          clearInterval(interval);
+          DOM.y2kCountdown.style.display = 'none';
+          
+          // Y2K chaos
+          DOM.body.style.filter = 'invert(1)';
+          setTimeout(() => {
+            DOM.body.style.filter = '';
+          }, 2000);
+          
+          // Spawn date-themed popups
+          for(let i = 0; i < 5; i++) {
+            const win = document.createElement('div');
+            win.className = 'popup-window';
+            win.style.width = '300px';
+            win.style.left = rnd(20, window.innerWidth - 320) + 'px';
+            win.style.top = rnd(50, window.innerHeight - 150) + 'px';
+            win.innerHTML = `
+              <div class="popup-header">
+                <span>DATE ERROR</span>
+                <span class="close-btn">X</span>
+              </div>
+              <div class="popup-body">
+                Current date: January 1, 1900<br>
+                Time is an illusion!
+              </div>
+            `;
+            win.querySelector('.close-btn').onclick = () => closePopup(win);
+            DOM.body.appendChild(win);
+            simState.elements.popups.push(win);
+          }
+          
+          simState.achievements.y2k = true;
+          showAchievement('Achievement: Time Traveler', 'Welcome to 1900!');
+        }
+      }, 1000);
+    }
+    
+    function triggerY2KEnding() {
+      DOM.desktop.className = 'desktop-bsod';
+      DOM.bsod.querySelector('h1').textContent = 'Y2K SYSTEM FAILURE';
+      DOM.bsod.querySelector('p').textContent = 'The year 2000 has destroyed your computer. Time no longer exists.';
+      stopSim();
+    }
+    
+    function showDVDLogo() {
+      DOM.dvdLogo.style.display = 'block';
+      DOM.dvdLogo.style.left = simState.dvdPosition.x + 'px';
+      DOM.dvdLogo.style.top = simState.dvdPosition.y + 'px';
+    }
+    
+    function updateDVDLogo() {
+      if (DOM.dvdLogo.style.display !== 'block') return;
+      
+      simState.dvdPosition.x += simState.dvdPosition.dx;
+      simState.dvdPosition.y += simState.dvdPosition.dy;
+      
+      const logo = DOM.dvdLogo;
+      const maxX = window.innerWidth - 100;
+      const maxY = window.innerHeight - 60;
+      
+      // Check corners
+      const hitCorner = (simState.dvdPosition.x <= 0 || simState.dvdPosition.x >= maxX) &&
+                       (simState.dvdPosition.y <= 0 || simState.dvdPosition.y >= maxY);
+      
+      if (simState.dvdPosition.x <= 0 || simState.dvdPosition.x >= maxX) {
+        simState.dvdPosition.dx = -simState.dvdPosition.dx;
+        logo.style.background = `linear-gradient(45deg, 
+          hsl(${Math.random() * 360}, 100%, 50%), 
+          hsl(${Math.random() * 360}, 100%, 50%))`;
+      }
+      
+      if (simState.dvdPosition.y <= 0 || simState.dvdPosition.y >= maxY) {
+        simState.dvdPosition.dy = -simState.dvdPosition.dy;
+        logo.style.background = `linear-gradient(45deg, 
+          hsl(${Math.random() * 360}, 100%, 50%), 
+          hsl(${Math.random() * 360}, 100%, 50%))`;
+      }
+      
+      if (hitCorner && !simState.achievements.dvdCorner) {
+        simState.achievements.dvdCorner = true;
+        showAchievement('Achievement: Perfect Corner', 'The prophecy is fulfilled!');
+        playSound('achievement');
+        updateIntegrity(10); // Reward!
+      }
+      
+      logo.style.left = simState.dvdPosition.x + 'px';
+      logo.style.top = simState.dvdPosition.y + 'px';
+    }
+    
+    function randomEvent() {
+      if (!simState.running) return;
+      
+      const events = [
+        () => { // Fake virus scan
+          const scanner = document.createElement('div');
+          scanner.className = 'virus-scanner';
+          scanner.innerHTML = `
+            <div class="virus-scanner-header">Norton AntiVirus 2000</div>
+            <div class="virus-scanner-body">
+              <p>Scanning for viruses...</p>
+              <div class="scan-progress">
+                <div class="scan-progress-bar"></div>
+              </div>
+              <p id="virus-count">Viruses found: 0</p>
+            </div>
+          `;
+          DOM.body.appendChild(scanner);
+          
+          let virusCount = 0;
+          const countInterval = setInterval(() => {
+            virusCount += rnd(50, 200);
+            document.getElementById('virus-count').textContent = `Viruses found: ${virusCount}`;
+          }, 100);
+          
+          setTimeout(() => {
+            clearInterval(countInterval);
+            scanner.querySelector('.virus-scanner-body').innerHTML = `
+              <p>Scan complete!</p>
+              <p style="color: red; font-weight: bold;">${virusCount} viruses found!</p>
+              <p>Purchase full version to remove!</p>
+              <button onclick="this.parentElement.parentElement.remove()">OK</button>
+            `;
+            
+            if (!simState.achievements.virusScan) {
+              simState.achievements.virusScan = true;
+              showAchievement('Achievement: Infected', `${virusCount} viruses? That's impressive!`);
+            }
+          }, 3000);
+          
+          makeDraggable(scanner);
+        },
+        
+        () => { // Screen color shift
+          const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
+          const color = colors[rnd(0, colors.length - 1)];
+          DOM.body.style.filter = `hue-rotate(${rnd(0, 360)}deg)`;
+          setTimeout(() => DOM.body.style.filter = '', 5000);
+        },
+        
+        () => { // Fake BSOD warning
+          const warning = document.createElement('div');
+          warning.className = 'popup-window popup-urgent';
+          warning.style.width = '400px';
+          warning.style.left = '50%';
+          warning.style.top = '50%';
+          warning.style.transform = 'translate(-50%, -50%)';
+          warning.innerHTML = `
+            <div class="popup-header">
+              <span>CRITICAL SYSTEM WARNING</span>
+              <span class="close-btn">X</span>
+            </div>
+            <div class="popup-body" style="text-align: center; color: red;">
+              <h2>IMMINENT SYSTEM FAILURE</h2>
+              <p>Blue Screen of Death in 10 seconds!</p>
+              <p>Quick! Click everything!</p>
+            </div>
+          `;
+          warning.querySelector('.close-btn').onclick = () => {
+            warning.remove();
+            updateIntegrity(5); // Reward for closing
+          };
+          DOM.body.appendChild(warning);
+          simState.elements.popups.push(warning);
+          
+          playSound('windows_error');
+          speak("Warning! System failure imminent!", { pitch: 0.5, rate: 1.5 });
+        },
+        
+        () => { // AOL voice
+          playSound('aol_voice');
+        },
+        
+        () => { // Cursor madness
+          document.documentElement.style.setProperty('--cursor-trail-color', 
+            `hsl(${Math.random() * 360}, 100%, 50%)`);
+        }
+      ];
+      
+      const event = events[rnd(0, events.length - 1)];
+      event();
+    }
+    
+    // --- ACHIEVEMENTS & UI ---
+    function showAchievement(title, description = '') { 
+      playSound('achievement'); 
+      const achievement = document.createElement('div'); 
+      achievement.className = 'achievement-popup'; 
+      achievement.innerHTML = `
+        <span class="achievement-popup-title">${title}</span>
+        ${description ? `<div>${description}</div>` : ''}
+      `; 
+      document.body.appendChild(achievement); 
+      
+      simState.score += 100 * difficultySettings[simState.difficulty].scoreMultiplier;
+      
+      setTimeout(() => achievement.remove(), 4000); 
+    }
+    
+    function checkAchievements() { 
+      const time = (Date.now() - simState.startTime) / 1000;
+      
+      if (!simState.achievements.survive60 && time >= 60) { 
+        simState.achievements.survive60 = true; 
+        showAchievement('Achievement: Survivor', 'Lasted 60 seconds in the digital hellscape!'); 
+      }
+      
+      if (!simState.achievements.close25 && simState.counts.closedPopups >= 25) { 
+        simState.achievements.close25 = true; 
+        showAchievement('Achievement: Popup Slayer', '25 popups vanquished!'); 
+      }
+    }
+    
+    // --- INTRO & UTILITIES ---
+    function showStartControls() { 
+      DOM.introContainer.style.display = 'none'; 
+      DOM.startControls.style.display = 'block';
+      playSound('startup');
+    }
+    
+    DOM.skipIntroBtn.onclick = showStartControls;
+    DOM.introCrawler.addEventListener('animationend', showStartControls);
+    
+    function rnd(min, max) { 
+      return Math.floor(Math.random() * (max - min + 1)) + min; 
+    }
+    
+    function makeDraggable(elmnt) { 
+      let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0; 
+      const header = elmnt.querySelector(".popup-header, .virus-scanner-header"); 
+      if (header) { 
+        header.onmousedown = dragMouseDown; 
+      } else {
+        elmnt.onmousedown = dragMouseDown;
+      }
+      
+      function dragMouseDown(e) { 
+        e = e || window.event; 
+        e.preventDefault(); 
+        e.stopPropagation(); 
+        pos3 = e.clientX; 
+        pos4 = e.clientY; 
+        document.onmouseup = closeDragElement; 
+        document.onmousemove = elementDrag; 
+      } 
+      
+      function elementDrag(e) { 
+        e = e || window.event; 
+        e.preventDefault(); 
+        pos1 = pos3 - e.clientX; 
+        pos2 = pos4 - e.clientY; 
+        pos3 = e.clientX; 
+        pos4 = e.clientY; 
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px"; 
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px"; 
+      } 
+      
+      function closeDragElement() { 
+        document.onmouseup = null; 
+        document.onmousemove = null; 
+      } 
+    }
+    
+    function playRandomSystemSound() { 
+      if (!simState.running) return;
+      
+      const sounds = [
+        () => playSound('windows_error'),
+        () => playSound('icq_uh_oh'),
+        () => playSound('aol_voice'),
+        () => speak("System resources low", { pitch: 1.8, rate: 1.5 }),
+        () => speak("Would you like to scan for viruses?", { pitch: 2, rate: 1.3 }),
+        () => playSound('modem')
+      ];
+      
+      const sound = sounds[rnd(0, sounds.length - 1)];
+      sound();
+    }
+    
+    function updateAmbientSound() { 
+      if (!ambientSource) return; 
+      const intensity = Math.min(1, simState.resources.cpu / 100); 
+      masterGain.gain.value = 0.3 + intensity * 0.7;
+    }
+  </script>
+</body>
+</html>
